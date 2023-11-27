@@ -1,3 +1,4 @@
+#Compress images to zip file which is no more than 128M each. Updated by Nov.25 2023
 import os
 import docx
 path='/home/ubuntu/chenq/docx_evaluate_score/data/all_docx/input'
@@ -84,15 +85,15 @@ files_path = [] #['a.txt', 'K.result.xlsx']
 n_zip_id=0
 for root, dirs, files in os.walk(inputdir):
     for file in files:
-        # 获取文件所属目录
+        # 
         # print(root)
-        # 获取文件路径
+        # 
         # print(os.path.join(root,file))
         if (file.endswith('.pgm') and 'output' not in root):
             # print(file+' completed!')
             # image_count=word2pic(file, './tmp', './imgs')
             try:
-                #if file=='222016310011059许文欣邮件合并.docx': may cost 1479s
+               
                 #    a=3
                 a=3
                 #print(file)
