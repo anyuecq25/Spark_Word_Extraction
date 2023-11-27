@@ -2,16 +2,16 @@
 This is the project for the Paper 1 and Paper 2. (Paper2 is under review. If you use this code ,please site.)
 
 rdd_read_docx_v_2021_10_11.py    :Reading docx files with Spark, See Algorithm 1 in Paper 1.
-
+#For 3D models:<br>
 rdd_read_obj_FPFH.py		 :Extracting FPFH features from 3D models, which is included in Paper2.	
 
-for images:
+#For images:<br>
 
 step1: python_read_image_compress_to_128M.py  :Extracting image features from images, which is included in Paper2 with compression schema. And each zip file is 128M Byte.
 
 step2: rdd_read_images_tackle_zip_files.py  :Extracting image features from images, which is included in Paper2 with compression schema.	
 
-bencharmark: for tika
+#bencharmark: for tika<br>
 rdd_read_docx_single_node_local_file_shm_with_tika.py : Reading with tika
 
 
