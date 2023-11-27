@@ -1,7 +1,9 @@
 # Spark_Word_Extraction
 This is the project for the Paper 1 and Paper 2. (Paper2 is under review. If you use this code ,please site.)
 
-rdd_read_docx_v_2021_10_11.py    :Reading docx files with Spark, See Algorithm 1 in Paper 1.
+#For text processing:<br>
+
+rdd_read_docx_improved_tackle_20000.py    :Improved of reading docx files with Spark, See Algorithm 1, 2  in Paper 1. 
 #For 3D models:<br>
 rdd_read_obj_FPFH.py		 :Extracting FPFH features from 3D models, which is included in Paper2.	
 
