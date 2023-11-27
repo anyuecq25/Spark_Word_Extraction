@@ -32,28 +32,6 @@ total=sc.accumulator(0)
 
 import sys
 import time
-def get_text_from_docx(input_docx_path):
-	start = time.clock()
-	docs = docx.Document(input_docx_path)
-	text_list=[]
-	n_p =len(docs.paragraphs)
-	if (n_p > 2000):
-		res = 'paragraph count >2000'
-		print(input_docx_path+' paragraph count >2000  is: '+str(n_p))
-		return res
-	for i in range(n_p):
-		string_=docs.paragraphs[i].text
-		if string_ != ' ' and string_ != ' ' and len(string_) > 0:
-			text_list.append(string_.strip())
-	for table in docs.tables:
-	    for row in table.rows:
-	        for cell in row.cells:
-	            text_list.append(cell.text.strip())   # new method faster than before 190s->24s by qchen 2021.2.7
-	duration=int((time.clock() - start))
-	if duration>1:
-		print(input_docx_path+' , execution time:\t' + str(duration) + 's')
-	return " ".join(text_list)
-
 
 import os
 #import docx
@@ -86,7 +64,7 @@ def processing_files_hog(filename):   # Extract HOG feature, as shown in Algorit
 
 import io
 import zipfile
-def itemsToRow(content,filename):
+def main_procedure_zip(content,filename):
 	filelist=[]
 	itemlist = []
 	f = zipfile.ZipFile(io.BytesIO(content))
@@ -146,10 +124,10 @@ path='/user/ubuntu/chenq/all_docx/input/*.docx'  #20201119   ncount=175420
 #PYSPARK_PYTHON=/home/ubuntu/env3.5/bin/python3.5
 #pyspark --master local[12] --executor-memory 32g --driver-memory 10g
 
-# Here is the main_procedure show in Algorithm 1, Algorithm 4.   Updated by Nov.26 2023
+# Here is the main_procedure show in Algorithm 2, Algorithm 4.   Updated by Nov.26 2023
 path='./chenq/Projection_Shrec14_Zip_128M/a*1.zip' # zip files ,almost 1.2G
 rdd = sc.binaryFiles(path)
-doc=rdd.flatMap(lambda x:itemsToRow(x[1],x[0]))
+doc=rdd.flatMap(lambda x:main_procedure_zip(x[1],x[0]))
 #doc.cache()
 #nread=doc.count()
 #print(nread)
@@ -162,22 +140,10 @@ import time
 ticks = time.time()
 saved_parquet_name='./mini_zip_docx/mini_zip_docx_'+str(int(ticks))+'.parquet'
 print('saved_parquet_name :'+saved_parquet_name)
-#df.write.parquet(saved_parquet_name)
+
 
 sc.stop()
-'''
-while(nread>0):
-	rdd1 = sc.binaryFiles(path)
-	doc1 = rdd1.map(lambda x: (x[0], read(x[1], x[0])))
-	nread = doc1.count()
-	if(nread>0):
-		doc=doc.union(doc1)
-		print('This time read: '+str(nread))
 
-print('total count is:'+str(doc.count()))
-#print(doc.first()[0])
-#print(doc.first()[1])
-'''
 
 
 
