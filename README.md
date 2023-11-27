@@ -1,7 +1,7 @@
 # Spark_Word_Extraction
 This is the project for the Paper 1 and Paper 2. (Paper2 is under review. If you use this code ,please site.)
 
-# For text processing(Algorithm 1 and 1.1):<br>
+## For text processing(Algorithm 1 and 1.1):<br>
 rdd_read_docx.py                          :Original algorithm 2 without tackling 20000 paragraphs problem.
 rdd_read_docx_improved_tackle_20000.py    :Improved of reading docx files with Spark, See Algorithm 1, 2  in Paper 1. 
 
