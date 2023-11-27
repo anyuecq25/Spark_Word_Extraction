@@ -15,4 +15,4 @@ spark-submit --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./VENV/env3.5/bin/pyt
 --conf spark.default.parallelism=40 \
 --conf spark.files.maxPartitionBytes=2097152 \
 --py-files pfh.py,utils.py \
---archives env35_scipy_matplotlib.zip#VENV rdd_read_obj_FPFH.py
+--archives env35_fpfh.zip#VENV rdd_read_obj_FPFH.py
