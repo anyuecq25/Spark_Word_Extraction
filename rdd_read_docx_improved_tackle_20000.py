@@ -1,4 +1,4 @@
-#Algorithm 1, 2. The results shown in Table 2 as 'Improved'.
+#Algorithm 1, 1.1. The results shown in Table 3 as 'Improved'.
 from pyspark.sql import SparkSession
 
 # from __future__ import print_function
@@ -27,7 +27,7 @@ def 𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(i
     if (
             n_p > 20000):  # do not process the document with more than 20000 paragraphs. Updated by Nov.25 2023. Results shown in Table3-'Improved'
         res = 'paragraph count >20000'
-        print(input_docx_path + ' paragraph count >2000  is: ' + str(n_p))
+        print(input_docx_path + ' paragraph count >20000  is: ' + str(n_p))
         return res
     for i in range(n_p):
         string_ = docs.paragraphs[i].text
@@ -39,7 +39,7 @@ def 𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(i
     for table in docs.tables:
         for row in table.rows:
             for cell in row.cells:
-                text_list.append(cell.text.strip())  # new method faster than before 190s->24s by qchen 2021.2.7
+                text_list.append(cell.text.strip())  # new method faster than before 190s->24s
                 # ith=ith + 1
                 # if ith%50==0:
                 # print(ith)
@@ -147,15 +147,9 @@ def main_procedure(x, filename):
 #		shutil.rmtree(os.path.join(tmp_path, i))
 
 
-path = 'file:///home/ubuntu/chenq/docx_evaluate_score/data/all_docx/input/*.docx'
-path = 'file:///home/ubuntu/chenq/test_docx/input/*.docx'
-path = 'file:////dev/shm/input/*.docx'
-path = 'file:////dev/shm/input2/input/*.docx'
-path = '/user/ubuntu/docx/input/*.docx'
-path = '/user/ubuntu/test_docx/input/*.docx'  # 20201119   ncount=10345
-path = '/user/ubuntu/chenq/all_docx/input/*.docx'  # 20201119   ncount=175420
-# path='./chenq/mini_test_docx/input/*.docx'  #desktop5 mini_test file count:115 on hdfs
-# path='har:////user/ubuntu/ainput/docx.har/input/*.docx'
+
+path = '/user/ubuntu/chenq/all_docx/input/*.docx'  # ncount=175420
+
 rdd = sc.binaryFiles(path)
 
 # rdd.cache()
@@ -171,7 +165,7 @@ rdd = sc.binaryFiles(path)
 # readUDF=udf(lambda a,z:read(a,z),StringType())
 #
 # df_new=df.select('_1',readUDF('_2','_1').alias('content'))
-# Here is the main_procedure show in Algorithm 1.   Updated by Nov.26 2023
+# Here is the main_procedure show in Algorithm 1.   Updated by Nov.25 2023
 doc = rdd.map(lambda x: (x[0], main_procedure(x[1], x[0])))  # Text Processing.
 
 # doc.foreach(print)
@@ -181,13 +175,8 @@ nread = doc.count()
 # nread=df_new.count()
 print(nread)
 
-# df_new.rdd.saveAsTextFile('./chenq/df_rdd1.csv')
 df = doc.toDF()
-# df_new.write.parquet('./chenq/4_4_16_df_114.parquet')
-# df_new.write.parquet('./chenq/4_4_16_df_175420.parquet')
-# df.write.parquet('./chenq/all_docx_175420_v23_6_nodes_tmp_20cores_16G_tackle_word_cannot_read_problem.parquet')
-# df.write.parquet('./chenq/trash_115.parquet')
-# df.write.parquet('./chenq/test_docx_1.parquet')
+
 
 sc.stop()
 
