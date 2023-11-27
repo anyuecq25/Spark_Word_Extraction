@@ -62,7 +62,7 @@ import shutil
 from skimage.feature import hog
 
 from skimage import io as skio
-def read(filename):
+def processing_files_hog(filename):   # Extract HOG feature, as shown in Algorithm 4. Nov.26 2023
 	filepath, fullflname = os.path.split(filename)
 	docfile = '/dev/shm/' + filename 	#docfile=filename
 	res=""
@@ -72,9 +72,9 @@ def read(filename):
 		#img = cv2.imread('./001.pgm')
 		#res = img.shape
 
-		img = skio.imread(docfile)
+		img = skio.imread(docfile)  # Read file
 		normalised_blocks, hog_image = hog(img, orientations=9, pixels_per_cell=(8, 8), cells_per_block=(8, 8),
-												block_norm='L2-Hys', visualize=True)
+												block_norm='L2-Hys', visualize=True) #Extract HOG feature
 		res=hog_image
 	except Exception as e:
 		print('exception: '+str(e))
@@ -89,17 +89,17 @@ def itemsToRow(content,filename):
 	filelist=[]
 	itemlist = []
 	f = zipfile.ZipFile(io.BytesIO(content))
-	for file in f.namelist():  # f.namelist()返回列表，列表中的元素为压缩文件中的每个文件
+	for file in f.namelist():  # f.namelist() Returned value is a List. Each element of the list corresponds to each file in the compressed file.
 		f.extract(file, "/dev/shm/")
 		#print('this is the zip files '+file)
 		filelist.append(file)
-		res=read(file)
+		res=processing_files_hog(file)
 		newrow=(file,res)
 		itemlist.append(newrow)
 	return itemlist
 
 
-def read_image(x,filename):
+def read_image_size(x,filename):   #Only get the image size, do not etract image feature. Resutls shown in Table9 -'Get Image Size' 2023.11.25
 	#return ""
 	filepath, fullflname = os.path.split(filename)
 	prefix = filepath.replace('hdfs://HA/', '')
@@ -145,7 +145,8 @@ path='/user/ubuntu/chenq/all_docx/input/*.docx'  #20201119   ncount=175420
 #PYSPARK_PYTHON=/home/ubuntu/env3.5/bin/python3.5
 #pyspark --master local[12] --executor-memory 32g --driver-memory 10g
 
-path='./chenq/Projection_Shrec14_Zip_128M/a*1.zip' #2021.2.16 #11 zip files ,almost 1.2G
+# Here is the main_procedure show in Algorithm 1, Algorithm 4.   Updated by Nov.26 2023
+path='./chenq/Projection_Shrec14_Zip_128M/a*1.zip' # zip files ,almost 1.2G
 rdd = sc.binaryFiles(path)
 doc=rdd.flatMap(lambda x:itemsToRow(x[1],x[0]))
 #doc.cache()
