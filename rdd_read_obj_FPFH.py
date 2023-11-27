@@ -1,4 +1,5 @@
 # 3D feature extraction
+#3D Feature extraction as depicted in Algorithm 3 by Qiang Chen and Yinong Chen et al. Nov.25 2023
 from pyspark.sql import SparkSession
 #from __future__ import print_function
 from pyspark import SparkContext
@@ -73,6 +74,9 @@ import numpy as np
 import os
 import shutil
 import random
+def main_procedure(x,filename,filetype="off"):
+    processing_files_fpfh(x,filename,filetype)
+    
 def processing_files_fpfh(x,filename,filetype="off"):
     mean_value=np.array([])
     filepath, fullflname = os.path.split(filename)
@@ -141,7 +145,7 @@ total=sc.accumulator(0)
 
 path='datasets/ModelNet40/*/*/*.off'  #ncount=12311
 path='datasets/ShapeNetCore.v2/*/*/models/*.obj'  #ncount=52472
-#path='datasets/ShapeNetCore.v2/02876657/*/models/*.obj'  #ncount
+
 rdd = sc.binaryFiles(path)
 
 if "off" in path:
@@ -149,7 +153,7 @@ if "off" in path:
 else:
     type="obj"
 
-doc=rdd.map(lambda x:(x[0],processing_files_fpfh(x[1],x[0],type)))
+doc=rdd.map(lambda x:(x[0],main_procedure(x[1],x[0],type)))
 
 
 doc_=doc.map(lambda x:[x[0],x[1],len(x[1])])
@@ -159,8 +163,8 @@ print("Total model is :",nread)
 
 df=doc_.toDF()
 
-#df.write.parquet('./chenq/3d_model_ModelNet40.parquet')
+
 df.write.parquet('./chenq/3d_model_SahpeNetCore.v2_FPFH_ALL_12cores_16executors_sample1000.parquet')
 
-#df.write.parquet('./chenq/3d_model_SahpeNetCore.v2_FPFH_f186d2998485c6ed5e9e2656aff7dd5b_sample1000.parquet')
+
 sc.stop()
