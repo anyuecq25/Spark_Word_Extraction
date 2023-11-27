@@ -10,4 +10,4 @@ spark-submit --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./VENV/env3.5/bin/pyt
 --executor-cores 16 \
 --num-executors 8 \
 --name rdd_docx_8_16cores_16G_tackle_20000_paragraphs \
---archives env35.zip#VENV rdd_read_docx.py
+--archives env35.zip#VENV rdd_read_docx_improved_tackle_20000.py
