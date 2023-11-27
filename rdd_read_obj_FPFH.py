@@ -73,7 +73,7 @@ import numpy as np
 import os
 import shutil
 import random
-def read(x,filename,filetype="off"):
+def processing_files_fpfh(x,filename,filetype="off"):
     mean_value=np.array([])
     filepath, fullflname = os.path.split(filename)
     prefix = filepath.replace('hdfs://HA/', '')
@@ -149,7 +149,7 @@ if "off" in path:
 else:
     type="obj"
 
-doc=rdd.map(lambda x:(x[0],read(x[1],x[0],type)))
+doc=rdd.map(lambda x:(x[0],processing_files_fpfh(x[1],x[0],type)))
 
 
 doc_=doc.map(lambda x:[x[0],x[1],len(x[1])])
