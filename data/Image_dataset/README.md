@@ -14,7 +14,7 @@ If the url above is not available, please contact us chenq AT swu.edu.cn directl
 We get the projection_shrec14(pgm files in this paper) from Song Bai[30]. If you need this dataset, with the permission of Song Bai[30], I will send you.
 
 [30] S. Bai, X. Bai, Z. Zhou, Z. Zhang, Q. Tian and L. J. Latecki, "GIFT: Towards scalable 3D shape
-retrieval," IEEE Transactions on Multimedia, vol. 19, pp. 1257-1271, 2017.
+retrieval," IEEE Transactions on Multimedia, vol. 19, pp. 1257-1271, 2017.  on https://songbai.site/publication/
 
 [16] B. Li, Y. Lu, C. Li, A. Godil, T. Schreck, M. Aono, M. Burtscher, Q. Chen, N. K. Chowdhury, B.
 Fang and others, "A comparison of 3D shape retrieval methods based on a large-scale benchmark
