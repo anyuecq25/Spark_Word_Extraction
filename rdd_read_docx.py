@@ -1,4 +1,4 @@
-#Text processing as depicted in Alogirhtm1,2 except tackling 20000 paragraph problem. Nov.25 2023
+#Text processing as depicted in Alogirhtm1,1.1 except tackling 20000 paragraph problem. Nov.25 2023
 from pyspark.sql import SparkSession
 
 #from __future__ import print_function
@@ -39,7 +39,7 @@ def 𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(i
 	for table in docs.tables:
 	    for row in table.rows:
 	        for cell in row.cells:
-	            text_list.append(cell.text.strip())   # new method faster than before 190s->24s by qchen 2021.2.7
+	            text_list.append(cell.text.strip())   # new method faster than before 190s->24s
 	            #ith=ith + 1
 	            #if ith%50==0:
 	                #print(ith)
@@ -112,15 +112,9 @@ def main_procedure(x,filename):
 	#		shutil.rmtree(os.path.join(tmp_path, i))
 
 
-path='file:///home/ubuntu/chenq/docx_evaluate_score/data/all_docx/input/*.docx'
-path='file:///home/ubuntu/chenq/test_docx/input/*.docx'
-path='file:////dev/shm/input/*.docx'
-path='file:////dev/shm/input2/input/*.docx'
-path='/user/ubuntu/docx/input/*.docx'
-path='/user/ubuntu/test_docx/input/*.docx'  #20201119   ncount=10345
-path='/user/ubuntu/chenq/all_docx/input/*.docx'  #20201119   ncount=175420
-#path='./chenq/mini_test_docx/input/*.docx'  #desktop5 mini_test file count:115 on hdfs
-#path='har:////user/ubuntu/ainput/docx.har/input/*.docx'
+
+path='/user/ubuntu/chenq/all_docx/input/*.docx'  #ncount=175420
+
 rdd = sc.binaryFiles(path)
 
 #rdd.cache()
@@ -146,28 +140,12 @@ nread=doc.count()
 #nread=df_new.count()
 print(nread)
 
-#df_new.rdd.saveAsTextFile('./chenq/df_rdd1.csv')
+
 df=doc.toDF()
-#df_new.write.parquet('./chenq/4_4_16_df_114.parquet')
-#df_new.write.parquet('./chenq/4_4_16_df_175420.parquet')
-#df.write.parquet('./chenq/all_docx_175420_v23_6_nodes_tmp_20cores_16G_tackle_word_cannot_read_problem.parquet')
-#df.write.parquet('./chenq/trash_115.parquet')
-#df.write.parquet('./chenq/test_docx_1.parquet')
+
 
 sc.stop()
-'''
-while(nread>0):
-	rdd1 = sc.binaryFiles(path)
-	doc1 = rdd1.map(lambda x: (x[0], read(x[1], x[0])))
-	nread = doc1.count()
-	if(nread>0):
-		doc=doc.union(doc1)
-		print('This time read: '+str(nread))
 
-print('total count is:'+str(doc.count()))
-#print(doc.first()[0])
-#print(doc.first()[1])
-'''
 
 
 
