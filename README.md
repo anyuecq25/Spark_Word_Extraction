@@ -29,9 +29,9 @@ sh is the shell command to run different test for our algorithm.
 
 #Paper1: Qiang Chen*; Yinong; Chen, Sheng Wu, Zili Zhang; <a href='https://ieeexplore.ieee.org/document/9590234' target=_blank>A Spark-based Open Source Framework for Large-Scale Parallel Processing of Rich Text Documents</a>, FiCloud 2021: International Conference on Future Internet of Things and Cloud, Italy, 2021.8.23 (IEEE)
 
-#Paper2. Our extending paper which is submited to Simulation Modelling Practice and Theory.  <br><br>The title is:  A Service-Oriented Framework for Large-Scale Documents Processing and Application via 3D Models and Feature Extraction
+#Paper2. Our extending paper which is submited to Simulation Modelling Practice and Theory. The title is:  A Service-Oriented Framework for Large-Scale Documents Processing and Application via 3D Models and Feature Extraction
 
 
 
-Nov. 25 2023
+Upadted By Nov 27 2023
 
