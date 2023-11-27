@@ -5,7 +5,7 @@ One can follows these steps to generate their own pgm dataset.
 Shrec14 3D model  https://www.nist.gov/itl/iad/shrec-2014-large-scale-comprehensive-3d-shape-retrieval
 8987 3D Models
 
-2. Convert 3D model to pgm image.
+2. Convert each 3D model to 64 pgm images.(From 64 different views,refer [30])
 
 
 --------------------------------------
