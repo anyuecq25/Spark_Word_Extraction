@@ -1,3 +1,4 @@
+#Benchmark for Python-docx. Running on one thread. Serial algorithm. Updated by Nov.25 2023
 import os
 import docx
 path='/home/ubuntu/chenq/docx_evaluate_score/data/all_docx/input'
@@ -61,15 +62,15 @@ start = time.clock()
 
 for root, dirs, files in os.walk(inputdir):
     for file in files:
-        # 获取文件所属目录
+        # 
         # print(root)
-        # 获取文件路径
+        # 
         # print(os.path.join(root,file))
         if (file.endswith('.docx') and 'output' not in root):
             # print(file+' completed!')
             # image_count=word2pic(file, './tmp', './imgs')
             try:
-                #if file=='222016310011059许文欣邮件合并.docx': may cost 1479s
+               
                 #    a=3
                 a=3
                 #print(file)
@@ -85,7 +86,7 @@ for root, dirs, files in os.walk(inputdir):
         #if ncount%10==0:
             
             #print(str(ncount)+'th :'+str(int((time.time() - start)))+'s ' +time.ctime())
-#Benchmark for Python-docx. Running on one thread. Serial algorithm. Updated by Nov.25 2023
+
 duration=int((time.clock() - start))
 print('execution time:\t' + str(duration) + 's')
 print('Total file is :'+str(ncount))
