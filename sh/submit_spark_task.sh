@@ -1,3 +1,4 @@
+#submit spark task.
 export PYSPARK_DRIVER_PYTHON=/home/ubuntu/env3.5/bin/Python3.5
 PYSPARK_PYTHON=./VENV/env3.5/bin/Python3
 Spark-submit --conf Spark.yarn.appMasterEnv.PYSPARK_PYTHON=./VENV/env3.5 /bin/Python3 \
