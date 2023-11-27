@@ -14,17 +14,18 @@ rdd_read_obj_FPFH.py		                  :Extracting FPFH features from 3D models
 
 ### For images(Algorithm 4):<br>
 
-####step1: <br>
+#### step1: <br>
 python_read_image_compress_to_128M.py  :Extracting image features from images, which is included in Paper2 with compression schema. And each zip file is 128M Byte.<br>
-####step2:<br> rdd_read_images_tackle_zip_files.py  :Extracting image features from images, which is included in Paper2 with compression schema.	
+#### step2:<br> 
+rdd_read_images_tackle_zip_files.py  :Extracting image features from images, which is included in Paper2 with compression schema.	
 
 ### bencharmark: <br>
-#### For tika<br>
-python_read_docx_tika.py : Reading with tika on local machine.<b>
-#### For python-docx:<br>
+#### For tika <br>
+python_read_docx_tika.py : Reading with tika on local machine.
+#### For python-docx: <br>
 python_read_docx.py   : Serial algorithm of Python-docx running on local machine.
 <br>
-### sh/*.<br>
+### sh <br>
 sh is the shell command to run different test for our algorithm.
 
 #Paper1: Qiang Chen*; Yinong; Chen, Sheng Wu, Zili Zhang; <a href='https://ieeexplore.ieee.org/document/9590234' target=_blank>A Spark-based Open Source Framework for Large-Scale Parallel Processing of Rich Text Documents</a>, FiCloud 2021: International Conference on Future Internet of Things and Cloud, Italy, 2021.8.23 (IEEE)
