@@ -1,4 +1,4 @@
-#Extracting image features from images. Nov.25 2023
+#Extracting image features from images as depicted in Algorithm 4. Nov.25 2023
 from pyspark.sql import SparkSession
 
 #from __future__ import print_function
