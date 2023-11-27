@@ -1,3 +1,4 @@
+# Spark submit script for Algorithm 4.
 export SPARK_MAJOR_VERSION=2
 export SPARK_HOME=/usr/hdp/2.6.1.0-129/spark2
 
