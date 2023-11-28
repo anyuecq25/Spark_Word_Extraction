@@ -1,0 +1,52 @@
+Make sure virtualenv is available in your OS(Ubuntu16.04 is ours). Doing these works on a Client Node.
+9:21 2023/11/28
+
+
+1.Create a virtual environment
+
+$virtualenv --no-site-packages -p python3.5 env3.5
+
+2.Making a Virtual Environment Portable
+$virtualenv env3.5 --relocatable
+
+3.Activate Environment
+$source activate env3.5
+
+4.Install packages that we needed. 
+$pip3 install -i https://mirrors.aliyun.com/pypi/simple/ 	numpy==1.17.0
+$pip3 install -i https://mirrors.aliyun.com/pypi/simple/  python-docx
+$pip3 install -i https://mirrors.aliyun.com/pypi/simple/  pandas==0.21.0
+$pip3 install -i https://mirrors.aliyun.com/pypi/simple/  jieba
+
+4.1 ModuleNotFoundError: No module named 'pip._internal.cli.main'
+vi env3.5/bin/pip3   ,change the first line to 
+#!/usr/bin/env python3.5
+
+then ok. The original line is #!/usr/bin/env python3.6 in my computer.
+Re-run 4.1.
+
+
+5.Creating a Virtual Environment File Archive
+zip -r env35.zip env3.5
+
+
+
+Spark submit script:
+Note: Deactivate the virtual environment before running this script.
+
+export SPARK_MAJOR_VERSION=2
+export SPARK_HOME=/usr/hdp/2.6.1.0-129/spark2
+
+export PYSPARK_DRIVER_PYTHON=/home/ubuntu/env3.5/bin/python3.5
+PYSPARK_PYTHON=./VENV/env3.5/bin/python3 
+spark-submit --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./VENV/env3.5/bin/python3 \
+--master yarn-client \
+--executor-memory 32g \
+--driver-memory 10g \
+--executor-cores 16 \
+--num-executors 6 \
+--name rdd_read_docx_minitest \
+--archives env35.zip#VENV rdd_read_docx.py
+
+
+Updated by Nov 28,2023
