@@ -33,7 +33,7 @@ total=sc.accumulator(0)
 
 import sys
 import time
-def 𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(input_docx_path):
+def processing_files_txt(input_docx_path):
 	start = time.clock()
 	docs = docx.Document(input_docx_path)
 	text_list=[]
@@ -64,7 +64,7 @@ def read(filename):
 	docfile = '/dev/shm/' + filename 	#docfile=filename
 	res=""
 	try:
-		res=𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(docfile)
+		res=processing_files_txt(docfile)
 	except Exception as e:
 		print('exception: '+str(e))
 	os.remove(docfile)
