@@ -26,7 +26,10 @@ python_read_docx_tika.py : Reading with tika on local machine.
 python_read_docx.py   : Serial algorithm of Python-docx running on local machine.
 <br>
 ### sh <br>
-sh is the shell command to run different test for our algorithm.
+sh is the shell command to run different test for our algorithm.<br>
+
+### How_to_install_virutal_environment_env35.txt
+refer to "How_to_install_virutal_environment_env35.txt" about how to prepare the virtual environment.
 
 #Paper1: Qiang Chen*; Yinong; Chen, Sheng Wu, Zili Zhang; <a href='https://ieeexplore.ieee.org/document/9590234' target=_blank>A Spark-based Open Source Framework for Large-Scale Parallel Processing of Rich Text Documents</a>, FiCloud 2021: International Conference on Future Internet of Things and Cloud, Italy, 2021.8.23 (IEEE)
 
