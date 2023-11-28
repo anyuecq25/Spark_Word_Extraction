@@ -17,6 +17,7 @@ $pip3 install -i https://mirrors.aliyun.com/pypi/simple/ 	numpy==1.17.0
 $pip3 install -i https://mirrors.aliyun.com/pypi/simple/  python-docx
 $pip3 install -i https://mirrors.aliyun.com/pypi/simple/  pandas==0.21.0
 $pip3 install -i https://mirrors.aliyun.com/pypi/simple/  jieba
+# if processing image, scikit-image and pillow should be installed.
 
 4.1 ModuleNotFoundError: No module named 'pip._internal.cli.main'
 vi env3.5/bin/pip3   ,change the first line to 
