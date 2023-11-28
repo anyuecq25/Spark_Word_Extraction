@@ -17,7 +17,7 @@ from pyspark.ml.feature import HashingTF,IDF,Tokenizer
 
 import sys
 import time
-def 𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(input_docx_path):
+def processing_files_txt(input_docx_path):
 	start = time.clock()
 
 
@@ -90,7 +90,7 @@ def main_procedure(x,filename):
 			f.close()
 			#docs = docx.Document('/tmp/'+filename)
 			try:
-				res=𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔_𝑓𝑖𝑙𝑒𝑠_𝑡𝑥𝑡(docfile)
+				res=processing_files_txt(docfile)
 				#print('call read func once in shm 200 record time.')
 				#print('1')
 				#with open(docfile+'_tmp','w') as t:
