@@ -37,5 +37,5 @@ refer to "How_to_install_virutal_environment_env35.txt" about how to prepare the
 
 
 
-Upadted By Nov 27 2023
+Updated By Nov 27, 2023
 
